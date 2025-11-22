@@ -214,13 +214,17 @@ function displayMobiles(data) {
 
 displayMobiles(mobiles);
 
+// SLIDER LOGIC
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
+const cards = document.getElementById("mobile-container");
 
 let index = 0;
-const group = 4; // 4 cards per slide
-const totalCards = document.querySelectorAll(".card").length;
-const maxIndex = Math.ceil(totalCards / group) - 1;
+const group = 4; 
+const cardWidth = 260;
+const gap = 15;
+const total = mobiles.length;
+const maxIndex = Math.ceil(total / group) - 1;
 
 nextBtn.onclick = () => {
   if (index < maxIndex) index++;
@@ -233,9 +237,10 @@ prevBtn.onclick = () => {
 };
 
 function slide() {
-  const move = index * (220 * group + 15 * (group - 1)); 
+  const move = index * ((cardWidth + gap) * group);
   cards.style.transform = `translateX(-${move}px)`;
 }
+
 
 
 
